@@ -1,0 +1,7 @@
+.venv/
+dbt_packages/
+dbt_modules/
+logs/
+target/
+*.duckdb
+*.sqlite

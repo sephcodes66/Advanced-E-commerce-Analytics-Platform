@@ -1,4 +1,4 @@
-˝# Analytics Engineering - Advanced E-commerce Analytics Platform
+# Analytics Engineering - Advanced E-commerce Analytics Platform
 
 ## 🚀 Project Overview
 

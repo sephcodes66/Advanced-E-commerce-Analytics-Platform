@@ -1,0 +1,17 @@
+# dbt
+target/
+dbt_packages/
+logs/
+
+# Python
+*.pyc
+__pycache__/
+.pytest_cache/
+htmlcov/
+
+# Data
+data/ecom_warehouse.duckdb
+data/prod_warehouse.duckdb
+
+# OS-specific
+.DS_Store

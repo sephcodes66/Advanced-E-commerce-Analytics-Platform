@@ -1,0 +1,13 @@
+ecom_analytics_platform:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: /Users/shabhrishreddyuddehal/Downloads/dbt/ecom_dbt_project/data/ecom_warehouse.duckdb
+      database: ecom_warehouse
+      schema: main
+    prod:
+      type: duckdb
+      path: /Users/shabhrishreddyuddehal/Downloads/dbt/ecom_dbt_project/data/prod_warehouse.duckdb
+      database: prod_warehouse
+      schema: main

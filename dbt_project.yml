@@ -1,0 +1,146 @@
+
+# Name your project! Project names should contain only lowercase characters
+# and underscores. A good package name should reflect your organization's
+# name or the intended use of these models
+name: 'ecom_analytics_platform'
+version: '2.0.0'
+config-version: 2
+
+profile: 'ecom_analytics_platform'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+  - "logs"
+
+
+# Configuring models
+# Full documentation: https://docs.getdbt.com/docs/configuring-models
+
+# In this example config, we tell dbt to build all models in the example/
+# directory as views. These settings can be overridden in the individual model
+# files using the `{{ config(...) }}` macro.
+models:
+  ecom_analytics_platform:
+    # RAW LAYER - Immutable source copies
+    raw:
+      +materialized: table
+      +docs:
+        node_color: "#FF6B6B"
+      +tags: ["raw", "source"]
+    
+    # STAGING LAYER - Light transformations and standardization
+    staging:
+      +materialized: view
+      +docs:
+        node_color: "#4ECDC4"
+      +tags: ["staging", "transformation"]
+    
+    # INTERMEDIATE LAYER - Business logic and complex transformations
+    intermediate:
+      +materialized: view
+      +docs:
+        node_color: "#45B7D1"
+      +tags: ["intermediate", "business_logic"]
+    
+    # MARTS LAYER - Production-ready data products
+    marts:
+      +materialized: table
+      +docs:
+        node_color: "#96CEB4"
+      +tags: ["marts", "production"]
+      
+      # Core business domains
+      core:
+        +materialized: table
+        +meta:
+          owner: "analytics_team"
+          domain: "core_business"
+        +tags: ["core", "business_critical"]
+      
+      # Financial analytics with incremental updates
+      finance:
+        +materialized: incremental
+        +unique_key: "transaction_id"
+        +on_schema_change: "fail"
+        +incremental_strategy: "append"
+        +tags: ["finance", "incremental"]
+        +meta:
+          owner: "finance_team"
+          refresh_frequency: "daily"
+      
+      # Marketing and customer analytics
+      marketing:
+        +materialized: table
+        +tags: ["marketing", "customer_analytics"]
+        +meta:
+          owner: "marketing_team"
+          domain: "customer_insights"
+
+# Global variables for business logic
+vars:
+  # Date and time configurations
+  current_date: "{{ run_started_at.strftime('%Y-%m-%d') }}"
+  lookback_days: 365
+  cohort_analysis_months: 24
+  partner_performance_lookback_days: 30
+  
+  # Business KPIs and thresholds
+  revenue_target_monthly: 2000000
+  high_value_order_threshold: 1000
+  customer_ltv_threshold: 5000
+  churn_risk_threshold: 0.7
+  
+  # Data quality and monitoring
+  data_quality_error_threshold: 0.02
+  freshness_threshold_hours: 6
+  row_count_variance_threshold: 0.1
+  
+  # Advanced analytics settings
+  seasonality_periods: [7, 30, 90, 365]
+  forecasting_horizon_days: 90
+  anomaly_detection_sensitivity: 0.95
+  
+  # Feature engineering
+  feature_engineering_window: 90
+  embedding_dimensions: 128
+  clustering_max_k: 10
+
+# Testing configuration
+tests:
+  +severity: "error"
+  +store_failures: true
+  +store_failures_as: "table"
+
+# Snapshots configuration
+snapshots:
+    +target_schema: "snapshots"
+    +strategy: "timestamp"
+    +updated_at: "updated_at"
+
+# Seeds configuration
+seeds:
+    +schema: "reference_data"
+    +materialized: table
+    +docs:
+      node_color: "#F7DC6F"
+
+# Hooks for advanced operations
+on-run-start:
+  - "{{ log('Starting dbt run at ' ~ run_started_at, info=true) }}"
+
+on-run-end:
+  - "{{ log('Completed dbt run at ' ~ run_started_at, info=true) }}"
+
+# Quoting for different databases
+quoting:
+  database: false
+  schema: false
+  identifier: false

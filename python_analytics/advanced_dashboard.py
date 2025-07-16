@@ -67,7 +67,7 @@ st.markdown("""
 
 class EcommerceAnalytics:
     def __init__(self):
-        self.conn = duckdb.connect('/Users/shabhrishreddyuddehal/Downloads/dbt/ecom_dbt_project/data/ecom_warehouse.duckdb')
+        self.conn = duckdb.connect('../data/ecom_warehouse.duckdb')
         self.scaler = StandardScaler()
         
     def load_data(self, query):

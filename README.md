@@ -4,6 +4,15 @@
 
 The platform transforms raw e-commerce data into powerful insights that drive strategic business decisions, optimize partner performance, and enable data-driven growth.
 
+![Dashboard Screenshot](./screenshots/ss_1.png)
+![Dashboard Screenshot](./screenshots/ss_2.png)
+![Dashboard Screenshot](./screenshots/ss_3.png)
+![Dashboard Screenshot](./screenshots/ss_4.png)
+![Dashboard Screenshot](./screenshots/ss_5.png)
+![Dashboard Screenshot](./screenshots/ss_6.png)
+![Dashboard Screenshot](./screenshots/ss_7.png)
+
+
 ## 🎯 Key Features
 
 ### 📊 Advanced Analytics Models

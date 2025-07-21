@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v5.0.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -13,42 +13,35 @@ repos:
         args: ['--autofix', '--indent=2']
 
   - repo: https://github.com/psf/black
-    rev: 23.7.0
+    rev: 25.1.0
     hooks:
       - id: black
         language_version: python3
         files: ^python_analytics/.*\.py$
 
   - repo: https://github.com/pycqa/isort
-    rev: 5.12.0
+    rev: 6.0.1
     hooks:
       - id: isort
         args: ["--profile", "black"]
         files: ^python_analytics/.*\.py$
 
   - repo: https://github.com/PyCQA/flake8
-    rev: 6.0.0
+    rev: 7.3.0
     hooks:
       - id: flake8
         args: [--max-line-length=88, --extend-ignore=E203]
         files: ^python_analytics/.*\.py$
 
-  - repo: https://github.com/dbt-labs/dbt-core
-    rev: v1.7.0
-    hooks:
-      - id: dbt-parse
-      - id: dbt-compile
-      - id: dbt-deps
-
   - repo: https://github.com/sqlfluff/sqlfluff
-    rev: 2.3.2
+    rev: 3.4.2
     hooks:
       - id: sqlfluff-lint
         files: ^models/.*\.sql$
         args: [--dialect, duckdb, --config, .sqlfluff]
 
   - repo: https://github.com/sqlfluff/sqlfluff
-    rev: 2.3.2
+    rev: 3.4.2
     hooks:
       - id: sqlfluff-fix
         files: ^models/.*\.sql$

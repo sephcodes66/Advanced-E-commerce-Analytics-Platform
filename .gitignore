@@ -1,0 +1,23 @@
+# DBT artifacts
+target/
+logs/
+dbt_packages/
+
+# Python artifacts
+*.pyc
+__pycache__/
+.venv/
+
+# Database files
+data/ecom_warehouse.duckdb
+data/ecom_warehouse.duckdb.wal
+data/prod_warehouse.duckdb
+data/prod_warehouse.duckdb.wal
+
+# IDE / OS files
+.DS_Store
+.idea/
+*.vscode/
+
+# Log files
+*.log

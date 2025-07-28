@@ -1,3 +1,6 @@
+> [!NOTE]
+> This project is a collaborative effort between a human developer and an AI coding agent, created for educational and demonstration purposes.
+
 # E-commerce Data Analytics
 
 This project takes raw e-commerce data and turns it into useful information for making business decisions.
